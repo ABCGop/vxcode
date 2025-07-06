@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Download VxCode AI - Free AI-Powered IDE',
@@ -68,6 +68,30 @@ export default function DownloadPage() {
           </div>
         </div>
 
+        {/* Development Notice */}
+        <div className="bg-yellow-900/20 border border-yellow-500/30 rounded-2xl p-6 mb-16">
+          <div className="flex items-start space-x-4">
+            <div className="text-yellow-400 mt-1">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-yellow-400 mb-2">⚠️ Development Notice</h3>
+              <p className="text-gray-300 mb-3">
+                VxCode AI is currently in active development. While the core IDE functionality is stable, 
+                some AI features may still be in testing phase and might not work as expected.
+              </p>
+              <p className="text-gray-300">
+                If you encounter any issues with AI features or have feedback, please contact us at{' '}
+                <a href="mailto:opabcg@vxdev.fun" className="text-yellow-400 hover:text-yellow-300 underline">
+                  opabcg@vxdev.fun
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Main Download Options */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {downloadOptions.map((option, index) => (
@@ -111,6 +135,11 @@ export default function DownloadPage() {
                     : 'bg-gray-600 text-gray-300 cursor-not-allowed'
                 }`}
                 disabled={!option.available}
+                onClick={() => {
+                  if (option.available && option.platform === 'Windows') {
+                    window.open('https://github.com/ABCGop/vxcode/releases/download/1/VxCodeSetup.exe', '_blank');
+                  }
+                }}
               >
                 {option.available ? `Download for ${option.platform}` : 'Coming Soon'}
               </button>
@@ -269,7 +298,7 @@ export default function DownloadPage() {
             <a href="/docs" className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
               View Documentation
             </a>
-            <a href="mailto:support@vxcode.ai" className="text-blue-400 hover:text-blue-300 px-6 py-3 rounded-lg font-medium transition-colors border border-blue-400/30 hover:border-blue-300/50">
+            <a href="mailto:opabcg@vxdev.fun" className="text-blue-400 hover:text-blue-300 px-6 py-3 rounded-lg font-medium transition-colors border border-blue-400/30 hover:border-blue-300/50">
               Contact Support
             </a>
           </div>
