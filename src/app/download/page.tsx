@@ -1,11 +1,16 @@
-import { Metadata } from 'next';
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Download VxCode AI - Free AI-Powered IDE',
-  description: 'Download VxCode AI for Windows, macOS, and Linux. Get the most advanced AI-powered IDE completely free.',
-}
+import { useEffect } from 'react'
 
 export default function DownloadPage() {
+  // Set page metadata
+  useEffect(() => {
+    document.title = 'Download VxCode AI - Free AI-Powered IDE'
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Download VxCode AI for Windows, macOS, and Linux. Get the most advanced AI-powered IDE completely free.')
+    }
+  }, [])
   const downloadOptions = [
     {
       platform: 'Windows',
